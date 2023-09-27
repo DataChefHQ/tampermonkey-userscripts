@@ -9,7 +9,6 @@
 // @grant        none
 // ==/UserScript==
 
-// preload page before running script
 window.addEventListener('load', function(){
     'use strict';
 
