@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Region Alert
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Tamper the AWS console bar, making sure the user knows they messed up the region
 // @author       Arman Rezaei @ DataChef
 // @match        https://*.console.aws.amazon.com/console/*
@@ -33,11 +33,11 @@ window.addEventListener('load', function(){
     // create a bar to show the region status
     let colorBar = document.createElement("div");
     colorBar.style.backgroundColor = color;
-    colorBar.style.height = "15px";
+    colorBar.style.height = "20px";
     colorBar.style.width = "100%";
     colorBar.style.position = "relative";
 
-    // display message inside our bar
+    // display message inside bar
     let messageElement = document.createElement("div");
     messageElement.style.color = "white";
     messageElement.style.fontSize = "12px";
@@ -48,6 +48,27 @@ window.addEventListener('load', function(){
     messageElement.style.transform = "translate(-50%, -50%)";
     messageElement.innerHTML = message;
 
+    // create a div to contain the logo and text
+    let logoDiv = document.createElement("div");
+    logoDiv.style.display = "flex";
+    logoDiv.style.alignItems = "center";
+    logoDiv.style.marginRight = "10px";
+
+    // create an image element for the logo
+    let logoImg = document.createElement("img");
+    logoImg.src = "media/logo.png";
+    logoImg.style.height = "20px";
+    logoImg.style.marginRight = "5px";
+    logoDiv.appendChild(logoImg);
+
+    // create a spam element for the text
+    let logoText = document.createElement("span");
+    logoText.innerHTML = "DataChef";
+    logoText.style.color = "white";
+    logoText.style.fontWeight = "bold";
+    logoDiv.appendChild(logoText);
+
+    colorBar.insertBefore(logoDiv, colorBar.childNodes[0]);
     colorBar.appendChild(messageElement);
     navBar.insertBefore(colorBar, navBar.childNodes[0]);
 });
