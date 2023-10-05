@@ -1,5 +1,5 @@
 # tampermonkey-userscripts
-TamperMonkey scripts made by Chefs
+TamperMonkey scripts made by Chefs.
 
 ## Usage
 To use the scripts in this repo:
